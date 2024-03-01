@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MetaMask Sign In</title>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.6/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+    <button id="loginButton">Sign In with MetaMask</button>
+    <div id="status"></div>
+
+    <script>
+        const loginButton = document.getElementById('loginButton');
+        const statusDiv = document.getElementById('status');
+
+        async function signInWithMetaMask() {
+            // First check if MetaMask is installed
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    // Request account access
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const account = accounts[0]; // Taking the first account
+
+                    // Create a new instance of the Ethers.js provider using MetaMask
+                    const provider = new ethers.providers.Web3Provider(window.ethereum);
+                    const signer = provider.getSigner();
+
+                    statusDiv.innerHTML = `Connected with <b>${account}</b>`;
+                } catch (error) {
+                    // Handle errors (e.g., user rejected the connection)
+                    statusDiv.innerHTML = `Error: ${error.message}`;
+                }
+            } else {
+                // MetaMask is not installed
+                statusDiv.innerHTML = 'MetaMask is not installed. Please install it to use this app.';
+            }
+        }
+
+        loginButton.addEventListener('click', signInWithMetaMask);
+    </script>
+</body>
+</html>
+
