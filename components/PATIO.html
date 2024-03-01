@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Combined Ethereum App</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .metamask {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .address-bar {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .address-bar input[type=text] {
+            width: 300px; /* Adjust based on your preference */
+            padding: 10px;
+            padding-left: 40px; /* Make space for the magnifying glass */
+            font-size: 16px;
+        }
+        .magnifying-glass {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px; /* Space between buttons */
+        }
+        .video-player {
+            width: 640px;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.6/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+
+    <div class="metamask">
+        <button id="loginButton">Sign In with MetaMask</button>
+        <div id="status"></div>
+    </div>
+
+    <div class="address-bar">
+        <span class="magnifying-glass">&#128269;</span> <!-- Unicode for magnifying glass -->
+        <input type="text" placeholder="Enter Ethereum Address">
+    </div>
+    <button onclick="tuneIn()">Tune In</button>
+    <button onclick="openYourMind()">Open Your Mind</button>
+
+    <div class="video-player">
+        <h1>Sample Video</h1>
+        <video width="640" height="360" controls>
+            <source src="../videos/tactical_thermonuclear_gnome.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p>This is a simple HTML5 video player example.</p>
+    </div>
+
+    <script>
+        const loginButton = document.getElementById('loginButton');
+        const statusDiv = document.getElementById('status');
+
+        async function signInWithMetaMask() {
+            console.log("sign in")
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const account = accounts[0];
+                    const provider = new ethers.providers.Web3Provider(window.ethereum);
+                    const signer = provider.getSigner();
+                    statusDiv.innerHTML = `Connected with <b>${account}</b>`;
+                } catch (error) {
+                    statusDiv.innerHTML = `Error: ${error.message}`;
+                }
+            } else {
+                statusDiv.innerHTML = 'MetaMask is not installed. Please install it to use this app.';
+            }
+        }
+
+        loginButton.addEventListener('click', signInWithMetaMask);
+
+        function tuneIn() {
+            alert('Tune In button clicked.');
+        }
+
+        function openYourMind() {
+            alert('Open Your Mind button clicked.');
+        }
+    </script>
+</body>
+</html>
