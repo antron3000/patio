@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ethereum Address App</title>
+    <style>
+        .address-bar {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .address-bar input[type=text] {
+            width: 80%;
+            padding: 10px;
+            padding-left: 40px; /* Make space for the magnifying glass */
+            font-size: 16px;
+        }
+        .magnifying-glass {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px; /* Space between buttons */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="address-bar">
+        <span class="magnifying-glass">&#128269;</span> <!-- Unicode for magnifying glass -->
+        <input type="text" placeholder="Enter Ethereum Address">
+    </div>
+    <button onclick="tuneIn()">Tune In</button>
+    <button onclick="openYourMind()">Open Your Mind</button>
+
+    <script>
+        function tuneIn() {
+            // Logic for the Tune In button can be added here
+            alert('Tune In button clicked.');
+        }
+
+        function openYourMind() {
+            // Logic for the Open Your Mind button can be added here
+            alert('Open Your Mind button clicked.');
+        }
+    </script>
+
+</body>
+</html>
