@@ -32,12 +32,12 @@
 
         // loginButton.addEventListener('click', signInWithMetaMask);
         
-        function click_BUSCADOR() {
-            window.location.href = './landing-page2.html';
+        function click_QUESTION() {
+            alert("Question? - email to TqLZU@example.com");
         }
 
         function click_END_TRANSMISSION() {
-            window.location.href = './landing-page2.html';
+            alert("End Transmission event");
         }
 
         function click_DONATE() {
@@ -45,7 +45,7 @@
         }
 
         function click_CAST() {
-            window.location.href = './landing-page2.html';
+            window.location.href = './cast.html';
         }
 
 
@@ -58,9 +58,14 @@
         }
 
         function openYourMind() {
-            alert('Open Your Mind button clicked.');
+            window.location.href = './playvideo.html';
         }
+
         
+        function click_ABOUT() {
+            window.location.href = './about.html';
+        }
+
     </script>    
 </head>
 <body class="fondo-class">
@@ -96,14 +101,14 @@
                     </textarea>                    
                 </div>
                 <div id="videoArea">
-                    <video width="100%" height="350px" controls id="myVideo">
+                    <video width="100%" height="375px" controls id="myVideo">
                         <source id="myVideoSource" src="../videos/tactical_thermonuclear_gnome.mp4" type="video/mp4 ">
                         Your browser does not support the video tag.
                     </video>
     
                 </div>
-                <div style="height: 25px;vertical-align: bottom; text-align: center;">
-                    <input type="text" class="brown-text-area" style="width:200px;height:21px;margin-left:5px;margin-right:5px;border-radius:3px;text-align: right;" value="ETH">
+                <div style="height: 35px;vertical-align: bottom; text-align: center;">
+                    <input type="text" class="brown-text-area" style="width:200px;height:21px;margin-left:5px;margin-right:5px;margin-top:5px;margin-bottom:5px;text-align: right;" value="ETH ">
                 </div>    
 
                 <div style="height: 80px; width:100%; text-align: center;" class="expand-box">
@@ -147,7 +152,7 @@
                 <img src="../images/ABOUT.png" alt="Clickable Image" onclick="click_ABOUT()">
             </p>
             <p class="alignright">
-                <img src="../images/X TWITTER.png" alt="Clickable Image" onclick="click_DISCORD()">
+                <img src="../images/X TWITTER.png" alt="Clickable Image" onclick="click_ABOUT()">
             </p>
         </div>
     </footer>

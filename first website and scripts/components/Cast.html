@@ -31,26 +31,25 @@
         }
 
         // loginButton.addEventListener('click', signInWithMetaMask);
-        
-        function click_BUSCADOR() {
-            window.location.href = './landing-page2.html';
+        function click_QUESTION() {
+            alert("Question? - email to TqLZU@example.com");
         }
 
         function click_END_TRANSMISSION() {
-            window.location.href = './landing-page2.html';
+            alert("End Transmission event");
         }
 
-        function click_ABOUT() {
-            window.location.href = './landing-page2.html';
+        function click_DONATE() {
+            alert("donate?");
         }
 
         function click_CAST() {
-            window.location.href = './landing-page2.html';
+            window.history.back();
         }
 
 
-        function click_DISCORD() {
-            window.location.href = 'http://discord.io/combinedethapp';
+        function click_BACK() {
+            window.history.back();
         }
 
         function tuneIn() {
@@ -58,13 +57,17 @@
         }
 
         function openYourMind() {
-            alert('Open Your Mind button clicked.');
+            window.location.href = './playvideo.html';
         }
         
+        function click_ABOUT() {
+            window.location.href = './about.html';
+        }
+
     </script>    
 </head>
 <body class="fondo-class">
-    <div id='wrapper' style="width: 90%;align-items: center;">
+    <div id='wrapper' style="width: 1000px;align-items: center;">
         <div class="metamask" style="width:100%;">
             <!-- <img id="loginButton" src="../images/WALLET.png"> -->
             <div class="expand-box">
@@ -129,12 +132,12 @@
     <footer>
         <div style="width:100%;" class="outline">
             <p class="alignleft">
-                <img src="../images/ABOUT.png" alt="Clickable Image" onclick="click_ABOUT()">
+                <img src="../images/ABOUT.png" id="hover" alt="Hover mouse over about button" onclick="click_ABOUT()">
             </p>
             <p class="alignright">
-                <img src="../images/X TWITTER.png" alt="Clickable Image" onclick="click_DISCORD()">
+                <img src="../images/X TWITTER.png" alt="Clickable Image" onclick="click_ABOUT()">
             </p>
-        </div>
+            </div>
     </footer>
 
 </body>
