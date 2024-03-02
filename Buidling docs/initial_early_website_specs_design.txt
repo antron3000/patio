@@ -1,0 +1,61 @@
+HOME PAGE
+.........
+-NAME
+-LOGO
+-CHANNEL ADDRESS address_field
+-sYNTONIZE button to submit the field
+-CAST button/link as secondary functionallity
+-INFO ABOUT: can be a button (?) or something with 1 line text that appears as a modal on mouseover in the button.
+
+
+Workflow:
+-User enters an address and starts listening the transactions to it, getting from the transaction data the bytes of the streaming, whic can be audio or video.
+
+*************************************************************************************************************************************************************************
+
+RADIO CHANNEL
+-------------
+-NAME
+-LOGO
+-Audio Player with Volume, Play and Stop buttons
+-DONATE field and button to send ETH to channel address.
+-CAST button/link as secondary functionallity
+-INFO ABOUT: can be a button (?) or something with 1 line text that appears as a modal on mouseover in the button
+
+*************************************************************************************************************************************************************************
+
+VIDEO CHANNEL
+-------------
+-NAME
+-LOGO
+-Video Player with Volume, Play and Stop buttons
+-DONATE field and button to send ETH to channel address.
+-CAST button/link as secondary functionallity
+-INFO ABOUT: can be a button (?) or something with 1 line text that appears as a modal on mouseover in the button
+
+
+*************************************************************************************************************************************************************************
+
+CAST PAGE
+---------
+-NAME
+-LOGO
+-IMPORT ADDRESS | GENERATE ADDRESS buttons where import let you write the provate key and generate gives you a private key to copy. 
+	Field changes to CHANNEL ADDRESS: 0x423423...239874239 [DISCONNECT] button
+-CONNECT AUDIO | CONNECT VIDEO first is disabled until you import or generate an address.
+-START | STOP buttons
+-2 TEXTAREA where notifications are being shown:
+	1. Left: Streaming information 
+	2. Right: Receivd donations showing amount and address
+
+-
+
+
+
+
+
+
+
+
+
+
