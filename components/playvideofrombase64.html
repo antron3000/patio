@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Load Base64 Video</title>
+</head>
+<body>
+    <h1>Sample Base64 Video</h1>
+    <video id="base64Video" width="640" height="480" controls>
+        Your browser does not support the video tag.
+    </video>
+    <script>
+        fetch('../../videos/out-of-band-attack_resizedBase64.txt')
+            .then(response => response.text())
+            .then(data => {
+                const videoElement = document.getElementById('base64Video');
+                videoElement.src = `data:video/mp4;base64,${data}`;
+            })
+            .catch(error => console.error('Error loading the base64 video:', error));
+    </script>
+</body>
+</html>
