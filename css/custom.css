@@ -11,5 +11,15 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    background-color: #f0f0f0; /* Fallback color */
+    background-color: #1f1f1f; /* Fallback color */
+  }
+
+  .fondo-about-class {
+    background-image: url("../images/fondo.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: -100px;
+    background-attachment: fixed;
+    background-color: #1f1f1f; /* Fallback color */
   }

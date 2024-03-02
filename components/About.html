@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAT.IO</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.6/dist/ethers.umd.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+    <link rel="stylesheet" type="text/css" href="../css/patio.css">
+
+    <script>
+        const loginButton = document.getElementById('loginButton');
+
+        const statusDiv = document.getElementById('status');
+        
+        async function signInWithMetaMask() {
+            console.log("sign in")
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const account = accounts[0];
+                    const provider = new ethers.providers.Web3Provider(window.ethereum);
+                    const signer = provider.getSigner();
+                    statusDiv.innerHTML = `Connected with <b>${account}</b>`;
+                } catch (error) {
+                    statusDiv.innerHTML = `Error: ${error.message}`;
+                }
+            } else {
+                statusDiv.innerHTML = 'MetaMask is not installed. Please install it to use this app.';
+            }
+        }
+
+        // loginButton.addEventListener('click', signInWithMetaMask);
+        
+        function click_BUSCADOR() {
+            window.location.href = './landing-page2.html';
+        }
+
+        function click_END_TRANSMISSION() {
+            window.location.href = './landing-page2.html';
+        }
+
+        function click_ABOUT() {
+            window.location.href = './landing-page2.html';
+        }
+
+        function click_CAST() {
+            window.location.href = './landing-page2.html';
+        }
+
+
+        function click_DISCORD() {
+            window.location.href = 'http://discord.io/combinedethapp';
+        }
+
+        function tuneIn() {
+            alert('Tune In button clicked.');
+        }
+
+        function openYourMind() {
+            alert('Open Your Mind button clicked.');
+        }
+        
+    </script>    
+</head>
+<body class="fondo-about-class">
+    <div id='wrapper'>
+ 
+        <div class="expand-box">
+            <p class="centered">
+                <img src="../images/LOGO-removebg.png" >
+            </p>
+        </div>
+
+        <div style="height: 75px;">
+
+        </div>
+
+        <div class="centered" style="text-align: center;">
+            <table>
+                <tr>
+                    <td border="0">
+                        <img src="../images/Rbnt47mU_400x400 1.png">
+                    </td>
+                    <td border="0">
+                        <img src="../images/RWouS_aA_400x400 1.png">
+                    </td>
+                    <td border="0">
+                        <img src="../images/DL_PKlT3_400x400 1.png">
+                    </td>
+                    <td border="0">
+                        <img src="../images/wIrfgM9b_400x400 1.png">
+                    </td>
+                </tr>
+                <tr>
+                    <td border="0" style="color:white;text-align: center;">
+                        @ariutokintumi
+                    </td>
+                    <td border="0" style="color:white;text-align: center;">
+                        @victorxva
+                    </td>
+                    <td border="0" style="color:white;text-align: center;">
+                        @walalaaaaa
+                    </td>
+                    <td border="0" style="color:white;text-align: center;">
+                        @realizer25
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="height: 75px;">
+
+        </div>
+        <div class="centered" style="color:white;text-align: center;font-size: 20px;">
+            Against the system, are you part of it?
+        </div>
+
+        <div style="height:250px"> 
+        </div>
+
+        <!-- <img src="../images/BUSCADOR.png" alt="Clickable Image" onclick="click_BUSCADOR()">
+        <img src="../images/END TRANSMISSION.png" alt="Clickable Image" onclick="click_END_TRANSMISSION()"> -->
+    </div>
+
+    <footer>
+        <div style="width:100%;" class="outline">
+            <p class="alignleft">
+                <img src="../images/ABOUT.png" alt="Clickable Image" onclick="click_ABOUT()">
+            </p>
+            <p class="alignright">
+                <img src="../images/X TWITTER.png" alt="Clickable Image" onclick="click_DISCORD()">
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,4 +1,5 @@
 body {
+    background-color: #1f1f1f;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,3 +46,140 @@ button {
     background-color: transparent; 
     padding: 0;
 }
+
+.display-flex * {
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+#expand-box
+{
+    width: 100%;
+    padding: 0;
+    /* border: 2px solid #BBB; */
+    margin: 7px 0 0 0;
+
+}
+
+#expand-box-header
+{
+    background-color: #BBB;
+    margin: 0;
+    color: #FFF;
+    padding: 0 0 3px 2px;
+}
+
+.alignleft {
+    float: left;
+    margin-left: 50px;    
+ }
+ .alignright {
+    float: right;
+    margin-right: 50px; 
+}
+
+.aligncenter {
+    float: center;
+}
+
+    
+ .outline {
+    width:100%; 
+    height:80px; 
+    float:left;    
+ }
+
+ #wrapper{
+    margin-top:270px;
+    height : 100%;
+    align-items: center;
+  }
+
+ footer{
+    position : relative;
+    transform : translateY(-100%);
+    width: 100%;
+  }
+
+  .centered {
+    width: 100%; /* 필요에 따라 조정 가능 */
+    text-align: center; /* 이미지 수평 중앙 정렬 */
+}
+
+
+.input-wrapper {
+    position: relative;
+    display: inline-block;
+    transform: rotate(-5deg); /* 약간 기울임 */
+}
+
+.input-wrapper input {
+    width: 595px; /* 너비 설정 */
+    height: 55px;
+    padding: 10px; /* 패딩 설정 */
+    border: none; 
+    background-color: transparent; 
+    padding: 0;
+}
+
+.input-wrapper .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/FILL\ ADDRESS.png') no-repeat center center; /* 이미지 URL 설정 */
+    background-size: cover; /* 이미지 크기 조정 */
+
+}
+
+.brown-text-area {
+    border-radius: 10px;
+    border: 2px solid white; /* 갈색 테두리 */
+    background-color: brown; /* 흰색 배경 */
+    color: white; 
+    text-align: left;
+}
+
+
+.cast-container {
+    display: flex; /* 플렉스박스 사용 */
+    width: 100%; /* 컨테이너 전체 너비 */
+}
+.cast-left {
+    flex: 60; /* 비율 60 */
+}
+
+.cast-right {
+    flex: 40; /* 비율 40 */
+}
+
+.video-container {
+    display: flex; /* 플렉스박스 사용 */
+    width: 100%; /* 컨테이너 전체 너비 */
+}
+.video-left {
+    flex: 30; /* 비율 60 */
+}
+
+.video-right {
+    flex: 30; /* 비율 40 */
+}
+
+#popup {
+    position: fixed; /* 고정 위치 */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* 중앙 정렬 */
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* div {
+    border: 1px;
+    border-color: #BBB;
+    border-style: solid;
+}  */

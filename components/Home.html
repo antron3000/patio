@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAT.IO</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.6/dist/ethers.umd.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+    <link rel="stylesheet" type="text/css" href="../css/patio.css">
+
+    <script>
+        const loginButton = document.getElementById('loginButton');
+
+        const statusDiv = document.getElementById('status');
+        
+        async function signInWithMetaMask() {
+            console.log("sign in")
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const account = accounts[0];
+                    const provider = new ethers.providers.Web3Provider(window.ethereum);
+                    const signer = provider.getSigner();
+                    statusDiv.innerHTML = `Connected with <b>${account}</b>`;
+                } catch (error) {
+                    statusDiv.innerHTML = `Error: ${error.message}`;
+                }
+            } else {
+                statusDiv.innerHTML = 'MetaMask is not installed. Please install it to use this app.';
+            }
+        }
+
+        // loginButton.addEventListener('click', signInWithMetaMask);
+        
+        function click_BUSCADOR() {
+            window.location.href = './landing-page2.html';
+        }
+
+        function click_END_TRANSMISSION() {
+            window.location.href = './landing-page2.html';
+        }
+
+        function click_ABOUT() {
+            window.location.href = './landing-page2.html';
+        }
+
+        function click_CAST() {
+            window.location.href = './landing-page2.html';
+        }
+
+
+        function click_DISCORD() {
+            window.location.href = 'http://discord.io/combinedethapp';
+        }
+
+        function tuneIn() {
+            alert('Tune In button clicked.');
+        }
+
+        function openYourMind() {
+            alert('Open Your Mind button clicked.');
+        }
+        
+    </script>    
+</head>
+<body class="fondo-class">
+    <div id='wrapper'>
+        <div class="metamask" style="width:100%;">
+            <!-- <img id="loginButton" src="../images/WALLET.png"> -->
+            <div class="expand-box">
+                <p class="alignleft">
+                    <button class="image-button" id="loginButton" onClick="signInWithMetaMask();">
+                        <img src="../images/WALLET.png" alt="Button Image">
+                    </button>
+                </p> 
+                <p class="alignright">
+                    <img src="../images/CAST.png" alt="Clickable Image" onclick="click_CAST()">
+                </p>
+                <p class="centered">
+                    <img src="../images/LOGO-removebg.png" >
+                </p>
+                <div id="status"></div>
+            </div>
+        </div>
+
+        <div style="height: 120px;">
+        </div>    
+
+        <div class="input-wrapper">
+            <form action="/video.html">
+                <input type="text" name="address" placeholder="Enter Ethereum Address!" />
+
+            </form>
+    
+            <div class="image-overlay"></div>
+        </div>
+
+        <!-- Unicode for magnifying glass -->        
+        <!-- <div class="address-bar">
+            <span class="magnifying-glass">&#128269;</span> 
+            <input type="text" placeholder="Enter Ethereum Address">
+        </div> -->
+        <div style="height: 120px;">
+        </div>    
+
+        <div style="height: 80px; width:100%; align-items: center;">
+            <span style="margin-left: 40px;margin-right: 40px">
+                <img src="../images/TUNE IN.png" alt="Clickable Image" onclick="tuneIn()">
+            </span>
+            <span style="margin-left: 40px; margin-top: 20px;">
+                <img src="../images/for_open_mind.png" alt="Clickable Image" onclick="openYourMind()">
+            </span>
+        </div>
+
+        <!-- <img src="../images/BUSCADOR.png" alt="Clickable Image" onclick="click_BUSCADOR()">
+        <img src="../images/END TRANSMISSION.png" alt="Clickable Image" onclick="click_END_TRANSMISSION()"> -->
+    </div>
+
+    <footer>
+        <div style="width:100%;" class="outline">
+            <p class="alignleft">
+                <img src="../images/ABOUT.png" alt="Clickable Image" onclick="click_ABOUT()">
+            </p>
+            <p class="alignright">
+                <img src="../images/X TWITTER.png" alt="Clickable Image" onclick="click_DISCORD()">
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
