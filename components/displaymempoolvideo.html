@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Data and Videos</title>
+    <style>
+        .transaction-data {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 40px; /* Increased bottom margin to accommodate video */
+        }
+        .transaction-video {
+            width: 640px;
+            height: 480px;
+            margin-bottom: 20px; /* Space between videos */
+        }
+    </style>
+</head>
+<body>
+    <h1>Transaction Data and Associated Videos</h1>
+    <div id="transactions"></div>
+
+    <script>
+        // Function to fetch transaction data and display them along with associated videos
+        async function fetchAndDisplayTransactions() {
+            const transactionsContainer = document.getElementById('transactions');
+
+            try {
+                // Fetch the transaction data from the server
+                const response = await fetch('https://patio-webhook-9be052cf1c45.herokuapp.com/api/transactionDatas');
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`);
+                }
+                const transactions = await response.json();
+
+                // Clear existing content
+                transactionsContainer.innerHTML = '';
+
+                // Loop through the transactions and add them to the page
+                transactions.forEach((data, index) => {
+                    const transactionElement = document.createElement('div');
+                    transactionElement.className = 'transaction-data';
+                    transactionElement.textContent = `Transaction Data ${index + 1}:`;
+                    transactionsContainer.appendChild(transactionElement);
+
+                    // Create and append a video element for each transaction
+                    const videoElement = document.createElement('video');
+                    videoElement.className = 'transaction-video';
+                    videoElement.setAttribute('controls', '');
+                    videoElement.src = `data:video/mp4;base64,${data}`;
+                    transactionElement.appendChild(videoElement);
+                });
+            } catch (error) {
+                // If an error occurs, display it
+                transactionsContainer.innerHTML = `<p>Error fetching transactions: ${error.message}</p>`;
+                console.error('Error loading transactions:', error);
+            }
+        }
+
+        // Call the function when the page loads
+        fetchAndDisplayTransactions();
+
+        // Set the function to be called every 5 seconds to update the transaction data and associated videos
+        setInterval(fetchAndDisplayTransactions, 5000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Cast</title>
+    <style>
+        .upload-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .upload-option {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cast Your Media</h1>
+    <div class="upload-container">
+        <!-- Option to upload video -->
+        <div class="upload-option">
+            <label for="video-upload">Cast Video:</label>
+            <input type="file" id="video-upload" accept="video/*">
+            <button onclick="castMedia('video')">Cast Video</button>
+        </div>
+        <!-- Option to upload audio -->
+        <div class="upload-option">
+            <label for="audio-upload">Cast Audio:</label>
+            <input type="file" id="audio-upload" accept="audio/*">
+            <button onclick="castMedia('audio')">Cast Audio</button>
+        </div>
+        <!-- Option to input Ethereum private key (WARNING: Just for educational purposes) -->
+        <div class="upload-option">
+            <label for="eth-private-key">Enter Ethereum Private Key:</label>
+            <input type="password" id="eth-private-key" placeholder="Enter your private key">
+            <button onclick="handlePrivateKey()">Submit Private Key</button>
+        </div>
+    </div>
+
+    <script>
+        function castMedia(type) {
+            var mediaInput = document.getElementById(type + '-upload');
+            var file = mediaInput.files[0];
+
+            if (file) {
+                alert(type.charAt(0).toUpperCase() + type.slice(1) + " cast initiated for: " + file.name);
+
+                if (type === 'video') {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onloadend = function() {
+                        var base64data = reader.result;
+                        console.log(base64data) //log the base64 data string
+                        var ethCompatibleData = convertToEthereumDataString(base64data);
+                        console.log(ethCompatibleData); // Log the Ethereum compatible data string
+                    };
+                }
+            } else {
+                alert("Please select a " + type + " file to cast.");
+            }
+        }
+
+        function convertToEthereumDataString(base64data) {
+            // Convert Base64 to binary string
+            var raw = atob(base64data.split(',')[1]); // Remove base64 header
+            var rawLength = raw.length;
+            var array = new Uint8Array(new ArrayBuffer(rawLength));
+
+            for (let i = 0; i < rawLength; i++) {
+                array[i] = raw.charCodeAt(i);
+            }
+
+            // Convert binary string to hex string
+            var hexArray = Array.from(array, function(byte) {
+                return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+            });
+
+            // Combine into a single hex string with Ethereum prefix
+            return '0x' + hexArray.join('');
+        }
+
+        function handlePrivateKey() {
+            var privateKeyInput = document.getElementById('eth-private-key');
+            var privateKey = privateKeyInput.value.trim();
+
+            if (privateKey) {
+                alert("Private key submitted. Please ensure this is secure.");
+            } else {
+                alert("Please enter your Ethereum private key.");
+            }
+        }
+    </script>
+</body>
+</html>
