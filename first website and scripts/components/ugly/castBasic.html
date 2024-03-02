@@ -45,38 +45,40 @@
             if (file) {
                 alert(type.charAt(0).toUpperCase() + type.slice(1) + " cast initiated for: " + file.name);
 
-                if (type === 'video') {
-                    var reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onloadend = function() {
-                        var base64data = reader.result;
-                        console.log(base64data) //log the base64 data string
-                        var ethCompatibleData = convertToEthereumDataString(base64data);
-                        console.log(ethCompatibleData); // Log the Ethereum compatible data string
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onloadend = function() {
+                    var base64data = reader.result;
+                    console.log(base64data); // Log the full base64 data string
+
+                    // Remove the data URL part from the base64 string
+                    var base64Content = base64data.split(',')[1];
+
+                    // Check the type of media and apply the appropriate prefix and suffix
+                    var modifiedBase64 = '';
+                    if (type === 'video') {
+                        modifiedBase64 = 'PATIOstationVideo_' + base64Content + '_stationPATIO';
+                    } else if (type === 'audio') {
+                        modifiedBase64 = 'PATIOstationAudio_' + base64Content + '_stationPATIO';
+                    }
+                    console.log(modifiedBase64); // Log the modified Base64 string without data URL part
+
+                    // Send the modified Base64 data to the backend via POST request
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "YOUR_API_ENDPOINT_HERE", true);
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            // Print the received response
+                            console.log(xhr.responseText);
+                        }
                     };
-                }
+                    var data = JSON.stringify({data: modifiedBase64});
+                    xhr.send(data);
+                };
             } else {
                 alert("Please select a " + type + " file to cast.");
             }
-        }
-
-        function convertToEthereumDataString(base64data) {
-            // Convert Base64 to binary string
-            var raw = atob(base64data.split(',')[1]); // Remove base64 header
-            var rawLength = raw.length;
-            var array = new Uint8Array(new ArrayBuffer(rawLength));
-
-            for (let i = 0; i < rawLength; i++) {
-                array[i] = raw.charCodeAt(i);
-            }
-
-            // Convert binary string to hex string
-            var hexArray = Array.from(array, function(byte) {
-                return ('0' + (byte & 0xFF).toString(16)).slice(-2);
-            });
-
-            // Combine into a single hex string with Ethereum prefix
-            return '0x' + hexArray.join('');
         }
 
         function handlePrivateKey() {
