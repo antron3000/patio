@@ -1,0 +1,47 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+.metamask {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.address-bar {
+    position: relative;
+    margin-bottom: 20px;
+}
+.address-bar input[type=text] {
+    width: 300px; /* Adjust based on your preference */
+    padding: 10px;
+    padding-left: 40px; /* Make space for the magnifying glass */
+    font-size: 16px;
+}
+.magnifying-glass {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px; /* Space between buttons */
+}
+.video-player {
+    width: 640px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.image-button {
+    border: none; 
+    background-color: transparent; 
+    padding: 0;
+}

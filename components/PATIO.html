@@ -3,82 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Combined Ethereum App</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .metamask {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-        .address-bar {
-            position: relative;
-            margin-bottom: 20px;
-        }
-        .address-bar input[type=text] {
-            width: 300px; /* Adjust based on your preference */
-            padding: 10px;
-            padding-left: 40px; /* Make space for the magnifying glass */
-            font-size: 16px;
-        }
-        .magnifying-glass {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-right: 10px; /* Space between buttons */
-        }
-        .video-player {
-            width: 640px;
-            height: auto;
-            margin-top: 20px;
-        }
-    </style>
+
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.6/dist/ethers.umd.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/custom.css">
-
-</head>
-<body class="fondo-class">
-    <div class="metamask">
-        <button id="loginButton">Sign In with MetaMask</button>
-        <div id="status"></div>
-    </div>
-    
-    <div>
-        <img src="../images/LOGO-removebg.png" alt="Logo">
-    </div>
-    <div class="address-bar">
-        <span class="magnifying-glass">&#128269;</span> <!-- Unicode for magnifying glass -->
-        <input type="text" placeholder="Enter Ethereum Address">
-    </div>
-    <button onclick="tuneIn()">Tune In</button>
-    <button onclick="openYourMind()">Open Your Mind</button>
-
-    <div class="video-player">
-        <h1>Sample Video</h1>
-        <video width="640" height="360" controls>
-            <source src="../videos/tactical_thermonuclear_gnome.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <p style="visibility: hidden;">This is a simple HTML5 video player example.</p>
-    </div>
+    <link rel="stylesheet" type="text/css" href="../css/patio.css">
 
     <script>
         const loginButton = document.getElementById('loginButton');
-        const statusDiv = document.getElementById('status');
 
+        const statusDiv = document.getElementById('status');
+        
         async function signInWithMetaMask() {
             console.log("sign in")
             if (typeof window.ethereum !== 'undefined') {
@@ -97,6 +31,27 @@
         }
 
         loginButton.addEventListener('click', signInWithMetaMask);
+        
+        function click_BUSCADOR() {
+            window.location.href = './landing-page2.html';
+        }
+
+        function click_END_TRANSMISSION() {
+            window.location.href = './landing-page2.html';
+        }
+
+        function click_ABOUT() {
+            window.location.href = './landing-page2.html';
+        }
+
+        function click_CAST() {
+            window.location.href = './landing-page2.html';
+        }
+
+
+        function click_DISCORD() {
+            window.location.href = 'http://discord.io/combinedethapp';
+        }
 
         function tuneIn() {
             alert('Tune In button clicked.');
@@ -105,6 +60,53 @@
         function openYourMind() {
             alert('Open Your Mind button clicked.');
         }
-    </script>
+        
+    </script>    
+</head>
+<body class="fondo-class">
+    <div class="metamask" >
+        <!-- <img id="loginButton" src="../images/WALLET.png"> -->
+        <button class="image-button" id="loginButton">
+            <img src="../images/WALLET.png" alt="Button Image">
+        </button>
+        <div id="status"></div>
+        <div style="display: flex; justify-content: flex-end">
+            <img src="../images/CAST.png" alt="Clickable Image" onclick="click_CAST()">
+        </div>        
+    </div>
+    <div class="address-bar">
+        <span class="magnifying-glass">&#128269;</span> <!-- Unicode for magnifying glass -->
+        <input type="text" placeholder="Enter Ethereum Address">
+    </div>
+
+    <button onclick="tuneIn()">Tune In</button>
+    <img src="../images/Syntonize.png" alt="Clickable Image" onclick="tuneIn()">
+
+    <img src="../images/for_open_mind.png" alt="Clickable Image" onclick="openYourMind()">
+
+    <div class="video-player">
+        <h1>Sample Video</h1>
+        <video width="640" height="360" controls>
+            <source src="../videos/tactical_thermonuclear_gnome.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p style="visibility: hidden;">This is a simple HTML5 video player example.</p>
+    </div>
+
+
+    <img src="../images/BUSCADOR.png" alt="Clickable Image" onclick="click_BUSCADOR()">
+    <img src="../images/END TRANSMISSION.png" alt="Clickable Image" onclick="click_END_TRANSMISSION()">
+
+
+    <div>
+    
+        <img src="../images/ABOUT.png" alt="Clickable Image" onclick="click_ABOUT()">
+    
+    
+        <div style="display: flex; justify-content: flex-end">
+            <img src="../images/DISCORD.png" alt="Clickable Image" onclick="click_DISCORD()">
+        </div>        
+    </div>
+
 </body>
 </html>
