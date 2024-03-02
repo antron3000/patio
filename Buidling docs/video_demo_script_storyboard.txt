@@ -1,0 +1,47 @@
+video_demo_script_storyboard
+
+
+COMES FROM "DEMO TIME" SLIDE
+
+
+CASTING
+
+1. Caster clicks on CAST in the homepage
+3 sec.
+
+2. Caster clicks on import wallet in CAST page
+3 sec.
+
+3. Caster inserts key (blured) and receives his public wallet as reply, it appears on the site.
+3 sec.
+
+4. Caster choose to cast a VIDEO and inputs the source.
+3 sec.
+
+5. Video shows in the box and the rigth DIV starts to show the streaming information
+6 sec.
+
+6. Some random TIP arrives.
+3 sec.
+
+
+
+TUNE IN
+
+1. User selects and then paste a station address in the bar
+3 sec
+
+2. We show the "Open your mind" functionallity but finally we click on the Tune in
+6 sec
+
+3. We get to the VIDEO casting page with a "waiting for signal" message on the middle with a dummy annimation (like loading).
+5 sec
+
+4. A transmission occurs (the broadcasted video)
+
+5. User sends a TIP (metamask transaction) for 0.0069 ETH
+
+
+
+
+CONTINUES TO THANK YOU SLIDE
