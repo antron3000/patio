@@ -31,26 +31,25 @@
         }
 
         // loginButton.addEventListener('click', signInWithMetaMask);
-        
-        function click_BUSCADOR() {
-            window.location.href = './landing-page2.html';
+        function click_QUESTION() {
+            alert("Question? - email to TqLZU@example.com");
         }
 
         function click_END_TRANSMISSION() {
-            window.location.href = './landing-page2.html';
+            alert("End Transmission event");
         }
 
-        function click_ABOUT() {
-            window.location.href = './landing-page2.html';
+        function click_DONATE() {
+            alert("donate?");
         }
 
         function click_CAST() {
-            window.location.href = './landing-page2.html';
+            window.location.href = './cast.html';
         }
 
 
-        function click_DISCORD() {
-            window.location.href = 'http://discord.io/combinedethapp';
+        function click_BACK() {
+            window.history.back();
         }
 
         function tuneIn() {
@@ -58,8 +57,13 @@
         }
 
         function openYourMind() {
-            alert('Open Your Mind button clicked.');
+            window.location.href = './playvideo.html';
         }
+
+        function click_ABOUT() {
+            window.history.back();
+        }
+
         
     </script>    
 </head>
@@ -80,30 +84,46 @@
             <table>
                 <tr>
                     <td border="0">
-                        <img src="../images/Rbnt47mU_400x400 1.png">
+                        <a href="https://x.com/ariutokintumi">
+                            <img src="../images/Rbnt47mU_400x400 1.png">
+                        </a>                        
                     </td>
                     <td border="0">
-                        <img src="../images/RWouS_aA_400x400 1.png">
+                        <a href="https://x.com/victorxva">
+                            <img src="../images/RWouS_aA_400x400 1.png">
+                        </a>                        
                     </td>
                     <td border="0">
-                        <img src="../images/DL_PKlT3_400x400 1.png">
+                        <a href="https://x.com/walalaaaaa">
+                            <img src="../images/DL_PKlT3_400x400 1.png">
+                        </a>                        
                     </td>
                     <td border="0">
-                        <img src="../images/wIrfgM9b_400x400 1.png">
+                        <a href="https://x.com/realizer25">
+                            <img src="../images/wIrfgM9b_400x400 1.png">
+                        </a>                        
                     </td>
                 </tr>
                 <tr>
-                    <td border="0" style="color:white;text-align: center;">
-                        @ariutokintumi
+                    <td border="0" style="color:white;text-align: center;padding-left: 30px;padding-right: 30px;">
+                        <a href="https://x.com/ariutokintumi">
+                            @ariutokintumi
+                        </a>                        
                     </td>
-                    <td border="0" style="color:white;text-align: center;">
-                        @victorxva
+                    <td border="0" style="color:white;text-align: center;padding-left: 30px;padding-right: 30px;">
+                        <a href="https://x.com/victorxva">
+                            @victorxva
+                        </a>                        
                     </td>
-                    <td border="0" style="color:white;text-align: center;">
-                        @walalaaaaa
+                    <td border="0" style="color:white;text-align: center;padding-left: 30px;padding-right: 30px;">
+                        <a href="https://x.com/walalaaaaa">
+                            @walalaaaaa
+                        </a>                        
                     </td>
-                    <td border="0" style="color:white;text-align: center;">
-                        @realizer25
+                    <td border="0" style="color:white;text-align: center;padding-left: 30px;padding-right: 30px;">
+                        <a href="https://x.com/realizer25">
+                            @realizer25
+                        </a>                        
                     </td>
                 </tr>
             </table>
@@ -123,15 +143,13 @@
     </div>
 
     <footer>
-        <div style="width:100%;" class="outline">
-            <p class="alignleft">
-                <img src="../images/ABOUT.png" alt="Clickable Image" onclick="click_ABOUT()">
-            </p>
-            <p class="alignright">
-                <img src="../images/X TWITTER.png" alt="Clickable Image" onclick="click_DISCORD()">
-            </p>
-        </div>
-    </footer>
+        <p class="alignleft">
+            <img src="../images/ABOUT.png" id="hover" alt="Hover mouse over about button" onclick="click_ABOUT()">
+        </p>
+        <p class="alignright">
+            <img src="../images/X TWITTER.png" alt="Clickable Image" onclick="click_ABOUT()">
+        </p>
+</footer>
 
 </body>
 </html>
