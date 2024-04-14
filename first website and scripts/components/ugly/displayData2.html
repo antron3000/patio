@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction Data</title>
     <style>
-        .transaction-data {
+        .transaction-data, .donation-data {
             margin-bottom: 20px;
             padding: 10px;
             border: 1px solid #ddd;
@@ -17,41 +17,66 @@
     <h1>Transaction Data</h1>
     <div id="transactions"></div>
 
+    <h2>Donations</h2>
+    <div id="donations"></div>
+
     <script>
         // Function to fetch transaction data and display them
         async function fetchAndDisplayTransactions() {
             const transactionsContainer = document.getElementById('transactions');
-
             try {
-                // Fetch the transaction data from the server
                 const response = await fetch('https://patio-webhook-9be052cf1c45.herokuapp.com/api/transactionDatas');
                 if (!response.ok) {
                     throw new Error(`Error: ${response.statusText}`);
                 }
                 const transactions = await response.json();
-
-                // Clear existing content
                 transactionsContainer.innerHTML = '';
-
-                // Loop through the transactions and add them to the page
                 transactions.forEach((data, index) => {
                     const transactionElement = document.createElement('div');
                     transactionElement.className = 'transaction-data';
-                    // Assuming the transaction data is a string and we want to display it
                     transactionElement.textContent = `Transaction Data ${index + 1}: ${data}`;
                     transactionsContainer.appendChild(transactionElement);
                 });
             } catch (error) {
-                // If an error occurs, display it
                 transactionsContainer.innerHTML = `<p>Error fetching transactions: ${error.message}</p>`;
             }
         }
 
+// Function to fetch donation data and display them
+async function fetchAndDisplayDonations() {
+    const donationsContainer = document.getElementById('donations');
+    try {
+        const response = await fetch('https://patio-webhook-9be052cf1c45.herokuapp.com/api/donations');
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+        const donations = await response.json();
+        donationsContainer.innerHTML = '';
+        donations.forEach((donation, index) => {
+            const donationElement = document.createElement('div');
+            donationElement.className = 'donation-data';
+            // Convert the value from Wei to ETH (1 ETH = 10^18 Wei)
+            const amountInEth = parseInt(donation.value) / 1e18;
+            // Include the sender's address with the donation amount
+            donationElement.textContent = `Donation ${index + 1}: ${amountInEth} ETH from ${donation.from}`;
+            donationsContainer.appendChild(donationElement);
+        });
+    } catch (error) {
+        donationsContainer.innerHTML = `<p>Error fetching donations: ${error.message}</p>`;
+    }
+}
+
+
+
         // Call the function when the page loads
         fetchAndDisplayTransactions();
+        fetchAndDisplayDonations();
 
-        // Set the function to be called every 5 seconds to update the transaction data
-        setInterval(fetchAndDisplayTransactions, 5000);
+        // Set the function to be called every 5 seconds to update the transaction data and donations
+        setInterval(() => {
+            fetchAndDisplayTransactions();
+            fetchAndDisplayDonations();
+        }, 5000);
     </script>
 </body>
 </html>

@@ -160,11 +160,11 @@ button {
     width: 100%; /* 컨테이너 전체 너비 */
 }
 .video-left {
-    flex: 30; /* 비율 60 */
+    flex: 20%; /* ratio 20 */
 }
 
 .video-right {
-    flex: 30; /* 비율 40 */
+    flex: 20%; /* ration aw20 */
 }
 
 #popup {
@@ -178,8 +178,8 @@ button {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 }
 
-/* div {
+div {
     border: 1px;
     border-color: #BBB;
     border-style: solid;
-}  */
+} 

@@ -18,8 +18,8 @@ body {
     background-image: url("../images/fondo.png");
     background-size: 60%;
     background-repeat: no-repeat;
-    background-position: center;
-    background-position-y: -100px;
+    background-position: top;
+    background-position-y: 0px;
     background-attachment: fixed;
     background-color: #1f1f1f; /* Fallback color */
   }

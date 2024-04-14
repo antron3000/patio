@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tune In</title>
+
+    
+    <style>
+        .transaction-data, .donation-data {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transaction Data</h1>
+    <div id="transactions"></div>
+
+    <h2>Donations</h2>
+    <div id="donatio    <div class="container">
+        <h1>Welcome to Patio</h1>
+        <div>
+            <h2>Navigate to Pages:</h2>
+            <ul>
+                <li><a href="components/landingpage.html">Landing Page</a></li>
+                <li><a href="components/landingpage2.html">Landing Page 2</a></li>
+                <li><a href="components/metamask.html">Metamask Integration</a></li>
+                <li><a href="components/PATIO.html">PATIO Main Page</a></li>
+                <li><a href="components/playvideo.html">Video Player</a></li>
+                <li><a href="components/testing/PATIOa.html">PATIO Test Page</a></li>
+                <li><a href="videos/tactical_thermonuclear_gnome.mp4">Tactical Thermonuclear Gnome Video</a></li>
+            </ul>
+        </div>ns"></div>
+
+    <script>
+        // Function to fetch transaction data and display them
+        async function fetchAndDisplayTransactions() {
+    const transactionsContainer = document.getElementById('transactions');
+    try {
+        const response = await fetch('https://patio-webhook-9be052cf1c45.herokuapp.com/api/transactionDatas');
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+        const transactions = await response.json();
+        transactionsContainer.innerHTML = ''; // Clear previous content
+        let combinedTransactionData = ''; // Initialize a variable to compile all transaction data
+        transactions.forEach((data) => {
+            const cleanedData = data.replace(/^0x/, ''); // Remove '0x' from the start of the data
+            combinedTransactionData += cleanedData; // Append cleaned data to the compilation string without any separator
+        });
+        // Create a single element for the combined transaction data and append it to the container
+        const transactionElement = document.createElement('div');
+        transactionElement.className = 'transaction-data';
+        transactionElement.textContent = `Combined Transaction Data: ${combinedTransactionData}`; // Display the combined transaction data
+        transactionsContainer.appendChild(transactionElement);
+    } catch (error) {
+        transactionsContainer.innerHTML = `<p>Error fetching transactions: ${error.message}</p>`;
+    }
+}
+
+
+
+// Function to fetch donation data and display them
+async function fetchAndDisplayDonations() {
+    const donationsContainer = document.getElementById('donations');
+    try {
+        const response = await fetch('https://patio-webhook-9be052cf1c45.herokuapp.com/api/donations');
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+        const donations = await response.json();
+        donationsContainer.innerHTML = '';
+        donations.forEach((donation, index) => {
+            const donationElement = document.createElement('div');
+            donationElement.className = 'donation-data';
+            // Convert the value from Wei to ETH (1 ETH = 10^18 Wei)
+            const amountInEth = parseInt(dontation.value) / 1e18;
+            // Include the sender's address with the donation amount
+            donationElement.textContent = `Donation ${index + 1}: ${amountInEth} ETH from ${donation.from}`;
+            donationsContainer.appendChild(donationElement);
+        });
+    } catch (error) {
+        donationsContainer.innerHTML = `<p>Error fetching donations: ${error.message}</p>`;
+    }
+}
+
+
+
+        // Call the function when the page loads
+        fetchAndDisplayTransactions();
+        fetchAndDisplayDonations();
+
+        // Set the function to be called every 5 seconds to update the transaction data and donations
+        setInterval(() => {
+            fetchAndDisplayTransactions();
+            fetchAndDisplayDonations();
+        }, 5000);
+    </script>
+</body>
+</html>
